@@ -1,0 +1,30 @@
+{
+  "name": "tracker-analyzer-extension",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-icons": "npx ts-node --project tsconfig.node.json scripts/generate-icons.ts",
+    "build:extension": "npm run generate-icons && npx ts-node --project tsconfig.node.json scripts/build-extension.ts",
+    "watch:extension": "nodemon --watch src/extension --ext ts,css,html --exec 'npm run build:extension'"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@sparticuz/chromium": "^132.0.0",
+    "next": "15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.304",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.17.19",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "esbuild": "^0.19.0",
+    "fs-extra": "^11.3.0",
+    "nodemon": "^3.0.1",
+    "sharp": "^0.33.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5"
+  }
+}
