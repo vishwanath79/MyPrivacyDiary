@@ -2196,7 +2196,530 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
                 // You could add a toast notification here
                 alert("JSON copied to clipboard!");
               }}
-              className="absolute top-2 right-2 p-2 bg-blue-600
+              className="absolute top-2 right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-xs"
+            >
+              Copy JSON
+            </button>
+            <pre className="text-gray-300 text-sm p-4 bg-[#12131e] rounded-lg overflow-x-auto whitespace-pre-wrap">
+              {formattedJson}
+            </pre>
+          </div>
+        </div>
+      )}
+      
+      {/* ... existing AI Analysis Summary and other sections ... */}
+    </div>
+  );
+}
+```
+
+This implementation:
+
+1. Adds a state variable to toggle the JSON view
+2. Creates a formatted JSON string with the same data that would be downloaded
+3. Adds a toggle button to show/hide the JSON view
+4. Displays the JSON in a pre-formatted code block when toggled on
+5. Includes a "Copy JSON" button to easily copy the data to clipboard
+
+The JSON view would appear between the header and the analysis results, allowing users to:
+- See the exact data structure being used
+- Copy the JSON data directly from the interface
+- Verify the data before downloading it
+
+This approach gives users more flexibility in how they access and use the tracker data, while still maintaining the option to download the full JSON file.
+
+---
+
+_**User**_
+
+wrap this into a json file: Who is tracking me ?
+**Key Findings:**
+Detected presence of first-party analytics.
+Detected usage of schema.org markup for SEO and product information.
+Scripts from apple.com domain are heavily used.
+Usage of Adobe Analytics through the script ac-analytics.js is detected.
+The website uses multiple cookies for session management, analytics, and user experience personalization.
+**Privacy Concerns:**
+Adobe Analytics may collect extensive data about user behavior on the site.
+Cookies like 's_fid', 's_vi', and 'mbox' are used for tracking and personalization, which could raise privacy concerns if not handled transparently.
+The 'shld_bt_m' cookie may be used for behavioral targeting or security measures, warranting closer examination.
+Data collected might be shared with third parties for advertising or analytics purposes.
+The website's privacy policy should be reviewed to understand how user data is collected, used, and shared.
+**Recommendations:**
+Review and update the website's privacy policy to ensure transparency about data collection practices.
+Implement a cookie consent banner to obtain user consent before setting tracking cookies.
+Consider using privacy-enhancing technologies like differential privacy or anonymization techniques for analytics data.
+Evaluate the necessity of each cookie and script to minimize data collection.
+Provide users with options to opt out of tracking and personalization.
+Implement measures to protect user data from unauthorized access and disclosure.
+1
+Total Trackers
+1
+High Impact Trackers
+10
+Cookies Detected
+Detected Trackers
+Category	Name	Impact	Source
+analytics	Adobe Analytics	high	https://www.apple.com/metrics/ac-analytics/2.24.0/scripts/ac-analytics.js
+
+---
+
+_**Assistant**_
+
+```json
+{
+  "analysis": {
+    "title": "Who is tracking me?",
+    "keyFindings": [
+      "Detected presence of first-party analytics.",
+      "Detected usage of schema.org markup for SEO and product information.",
+      "Scripts from apple.com domain are heavily used.",
+      "Usage of Adobe Analytics through the script ac-analytics.js is detected.",
+      "The website uses multiple cookies for session management, analytics, and user experience personalization."
+    ],
+    "privacyConcerns": [
+      "Adobe Analytics may collect extensive data about user behavior on the site.",
+      "Cookies like 's_fid', 's_vi', and 'mbox' are used for tracking and personalization, which could raise privacy concerns if not handled transparently.",
+      "The 'shld_bt_m' cookie may be used for behavioral targeting or security measures, warranting closer examination.",
+      "Data collected might be shared with third parties for advertising or analytics purposes.",
+      "The website's privacy policy should be reviewed to understand how user data is collected, used, and shared."
+    ],
+    "recommendations": [
+      "Review and update the website's privacy policy to ensure transparency about data collection practices.",
+      "Implement a cookie consent banner to obtain user consent before setting tracking cookies.",
+      "Consider using privacy-enhancing technologies like differential privacy or anonymization techniques for analytics data.",
+      "Evaluate the necessity of each cookie and script to minimize data collection.",
+      "Provide users with options to opt out of tracking and personalization.",
+      "Implement measures to protect user data from unauthorized access and disclosure."
+    ]
+  },
+  "statistics": {
+    "totalTrackers": 1,
+    "highImpactTrackers": 1,
+    "cookiesDetected": 10
+  },
+  "detectedTrackers": [
+    {
+      "category": "analytics",
+      "name": "Adobe Analytics",
+      "impact": "high",
+      "source": "https://www.apple.com/metrics/ac-analytics/2.24.0/scripts/ac-analytics.js"
+    }
+  ],
+  "timestamp": "2024-05-15T12:00:00.000Z",
+  "analyzedUrl": "https://www.apple.com"
+}
+```
+
+---
+
+_**User**_
+
+use to generate same json: Who is tracking me ?
+**Key Findings:**
+The website utilizes a variety of tracking technologies, including analytics, advertising networks, and third-party scripts.
+Several third-party scripts are loaded from external sources, some of which are known for tracking users across the web.
+The website uses cookies for personalization, advertising, and analytics purposes.
+NYT uses both first-party and third-party tracking mechanisms.
+Privacy Manager and Fides are used to handle consent.
+The site collects and sends data to several third-party services for analytics, advertising, and personalization, which may raise privacy concerns for users.
+**Privacy Concerns:**
+Extensive use of third-party tracking scripts, potentially enabling cross-site tracking.
+Collection of user data for behavioral advertising and personalized content without explicit consent, depending on GDPR settings.
+Potential for user fingerprinting through scripts like SecurePubAds and others.
+Data collection by third-party services like Google Analytics and Datadog.
+The `nyt-jkidd` cookie contains potentially sensitive information about user activity and interests.
+Lack of transparency regarding the specific purposes of each cookie and tracking script.
+The use of services like Iterate could involve collecting user feedback and potentially PII.
+**Recommendations:**
+Implement a comprehensive cookie consent management solution to obtain user consent before setting tracking cookies.
+Provide users with clear and concise information about the types of data collected and how it is used.
+Minimize the use of third-party tracking scripts and prioritize first-party analytics where possible.
+Regularly review and update the website's privacy policy to reflect current data collection practices.
+Conduct a privacy audit to identify and mitigate potential privacy risks.
+Use server-side tagging to reduce the number of client-side tracking scripts.
+Provide users with options to opt out of specific types of tracking.
+Ensure compliance with relevant privacy regulations, such as GDPR and CCPA.
+Evaluate the necessity of each third-party tracker and replace high-impact trackers with privacy-focused alternatives where applicable.
+27
+Total Trackers
+15
+High Impact Trackers
+9
+Cookies Detected
+Detected Trackers
+Category	Name	Impact	Source
+analytics	Google Analytics	high	googletagmanager.com
+analytics	Chartbeat	medium	chartbeat.com
+analytics	Datadog RUM	medium	datadoghq-browser-agent.com
+ad_networks	Google Ads	high	doubleclick.net
+ad_networks	Google Ad Services	high	googleadservices.com
+ad_networks	Amazon Ads	high	amazon-adsystem.com
+fingerprinting	SecurePubAds	high	securepubads.g.doubleclick.net
+marketing	Iterate	medium	iteratehq.com
+fingerprinting	SecurePubAds	high	securepubads
+analytics	Generic Analytics	medium	a1.nyt.com
+analytics	Google Tag Manager	high	googletagmanager.com
+fingerprinting	SecurePubAds	high	securepubads.g.doubleclick.net
+analytics	Google Tag Manager	high	gtag
+fingerprinting	SecurePubAds	high	securepubads.g.doubleclick.net
+analytics	Datadog RUM	medium	datadog
+ad_networks	Google Ads	high	securepubads.g.doubleclick.net
+ad_networks	Google Ads	high	pubads_impl.js
+fingerprinting	SecurePubAds	high	prebid9.26.0.js
+fingerprinting	SecurePubAds	high	adslot-7fdd87617fc98f98a245.js
+fingerprinting	SecurePubAds	high	apstag.js
+ad_networks	Amazon Ads	high	apstag.js
+analytics	BrandMetrics	medium	cdn.brandmetrics.com
+analytics	Google Analytics	high	show-ads.js
+analytics	NYT Analytics	medium	et2 snippet
+marketing	Launchpad Privacy Manager	medium	launchpad.privacymanager.io
+fingerprinting	grumi-ip	medium	rumcdn.geoedge.be
+analytics	NYT Analytics	medium	tags.js
+Â© 2025 ingvay7. All rights reserved.
+
+---
+
+_**Assistant**_
+
+```json
+{
+  "analysis": {
+    "title": "Who is tracking me?",
+    "keyFindings": [
+      "The website utilizes a variety of tracking technologies, including analytics, advertising networks, and third-party scripts.",
+      "Several third-party scripts are loaded from external sources, some of which are known for tracking users across the web.",
+      "The website uses cookies for personalization, advertising, and analytics purposes.",
+      "NYT uses both first-party and third-party tracking mechanisms.",
+      "Privacy Manager and Fides are used to handle consent.",
+      "The site collects and sends data to several third-party services for analytics, advertising, and personalization, which may raise privacy concerns for users."
+    ],
+    "privacyConcerns": [
+      "Extensive use of third-party tracking scripts, potentially enabling cross-site tracking.",
+      "Collection of user data for behavioral advertising and personalized content without explicit consent, depending on GDPR settings.",
+      "Potential for user fingerprinting through scripts like SecurePubAds and others.",
+      "Data collection by third-party services like Google Analytics and Datadog.",
+      "The `nyt-jkidd` cookie contains potentially sensitive information about user activity and interests.",
+      "Lack of transparency regarding the specific purposes of each cookie and tracking script.",
+      "The use of services like Iterate could involve collecting user feedback and potentially PII."
+    ],
+    "recommendations": [
+      "Implement a comprehensive cookie consent management solution to obtain user consent before setting tracking cookies.",
+      "Provide users with clear and concise information about the types of data collected and how it is used.",
+      "Minimize the use of third-party tracking scripts and prioritize first-party analytics where possible.",
+      "Regularly review and update the website's privacy policy to reflect current data collection practices.",
+      "Conduct a privacy audit to identify and mitigate potential privacy risks.",
+      "Use server-side tagging to reduce the number of client-side tracking scripts.",
+      "Provide users with options to opt out of specific types of tracking.",
+      "Ensure compliance with relevant privacy regulations, such as GDPR and CCPA.",
+      "Evaluate the necessity of each third-party tracker and replace high-impact trackers with privacy-focused alternatives where applicable."
+    ]
+  },
+  "statistics": {
+    "totalTrackers": 27,
+    "highImpactTrackers": 15,
+    "cookiesDetected": 9
+  },
+  "detectedTrackers": [
+    {
+      "category": "analytics",
+      "name": "Google Analytics",
+      "impact": "high",
+      "source": "googletagmanager.com"
+    },
+    {
+      "category": "analytics",
+      "name": "Chartbeat",
+      "impact": "medium",
+      "source": "chartbeat.com"
+    },
+    {
+      "category": "analytics",
+      "name": "Datadog RUM",
+      "impact": "medium",
+      "source": "datadoghq-browser-agent.com"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Google Ads",
+      "impact": "high",
+      "source": "doubleclick.net"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Google Ad Services",
+      "impact": "high",
+      "source": "googleadservices.com"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Amazon Ads",
+      "impact": "high",
+      "source": "amazon-adsystem.com"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "securepubads.g.doubleclick.net"
+    },
+    {
+      "category": "marketing",
+      "name": "Iterate",
+      "impact": "medium",
+      "source": "iteratehq.com"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "securepubads"
+    },
+    {
+      "category": "analytics",
+      "name": "Generic Analytics",
+      "impact": "medium",
+      "source": "a1.nyt.com"
+    },
+    {
+      "category": "analytics",
+      "name": "Google Tag Manager",
+      "impact": "high",
+      "source": "googletagmanager.com"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "securepubads.g.doubleclick.net"
+    },
+    {
+      "category": "analytics",
+      "name": "Google Tag Manager",
+      "impact": "high",
+      "source": "gtag"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "securepubads.g.doubleclick.net"
+    },
+    {
+      "category": "analytics",
+      "name": "Datadog RUM",
+      "impact": "medium",
+      "source": "datadog"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Google Ads",
+      "impact": "high",
+      "source": "securepubads.g.doubleclick.net"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Google Ads",
+      "impact": "high",
+      "source": "pubads_impl.js"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "prebid9.26.0.js"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "adslot-7fdd87617fc98f98a245.js"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "SecurePubAds",
+      "impact": "high",
+      "source": "apstag.js"
+    },
+    {
+      "category": "ad_networks",
+      "name": "Amazon Ads",
+      "impact": "high",
+      "source": "apstag.js"
+    },
+    {
+      "category": "analytics",
+      "name": "BrandMetrics",
+      "impact": "medium",
+      "source": "cdn.brandmetrics.com"
+    },
+    {
+      "category": "analytics",
+      "name": "Google Analytics",
+      "impact": "high",
+      "source": "show-ads.js"
+    },
+    {
+      "category": "analytics",
+      "name": "NYT Analytics",
+      "impact": "medium",
+      "source": "et2 snippet"
+    },
+    {
+      "category": "marketing",
+      "name": "Launchpad Privacy Manager",
+      "impact": "medium",
+      "source": "launchpad.privacymanager.io"
+    },
+    {
+      "category": "fingerprinting",
+      "name": "grumi-ip",
+      "impact": "medium",
+      "source": "rumcdn.geoedge.be"
+    },
+    {
+      "category": "analytics",
+      "name": "NYT Analytics",
+      "impact": "medium",
+      "source": "tags.js"
+    }
+  ],
+  "timestamp": "2024-05-15T12:00:00.000Z",
+  "analyzedUrl": "https://www.nytimes.com"
+}
+```
+
+---
+
+_**User**_
+
+still dont see the files downloaded . can you analyze entire @Codebase 
+
+---
+
+_**Assistant**_
+
+I'll analyze the codebase to understand why the files aren't being downloaded. Let me examine the key components related to the download functionality.
+
+First, let me look at the project structure to get a better understanding of the codebase.
+
+---
+
+_****_
+
+<details>
+            <summary>Listed current directory • **25** results</summary>
+        
+| Name |
+|-------|
+| 📁 `.git` |
+| 📁 `data` |
+| 📁 `src` |
+| 📄 `1` |
+| 📄 `.gitignore` |
+| 📁 `agent_folder` |
+| 📁 `dist` |
+| 📄 `package-lock.json` |
+| 📁 `node_modules` |
+| 📁 `.specstory` |
+| 📄 `tsconfig.node.json` |
+| 📄 `tailwind.config.ts` |
+| 📄 `tsconfig.json` |
+| 📁 `public` |
+| 📁 `scripts` |
+| 📄 `package.json` |
+| 📄 `postcss.config.mjs` |
+| 📄 `privacy-policy.md` |
+| 📄 `eslint.config.mjs` |
+| 📄 `next-env.d.ts` |
+| 📄 `next.config.ts` |
+| 📁 `api` |
+| 📄 `.puppeteerrc.cjs` |
+| 📄 `.DS_Store` |
+| 📄 `.env.local` |
+
+</details>
+
+---
+
+_****_
+
+I'll analyze the codebase to understand why the files aren't being downloaded. Let me examine the key components related to the download functionality.
+
+First, let's look at the source directory structure to understand the application components:
+
+<tool_result>
+Tool name: list_dir
+Args (the format/field names of the args do not mean anything to the user, so please do not repeat): {"relative_workspace_path": "src", "explanation": "Examining the source directory to understand the application components"}
+Results:
+Contents of directory:
+
+[dir]  utils/ (? items) - Mar 15, 07:19 PM
+[dir]  extension/ (? items) - Mar 15, 07:19 PM
+[dir]  types/ (? items) - Mar 15, 06:15 PM
+[dir]  constants/ (? items) - Mar 15, 06:15 PM
+[dir]  app/ (? items) - Mar 15, 06:15 PM
+[dir]  components/ (? items) - Mar 15, 06:15 PM
+</tool_result>
+
+Now, let's examine the extension directory since this is a browser extension:
+
+<tool_result>
+Tool name: list_dir
+Args (the format/field names of the args do not mean anything to the user, so please do not repeat): {"relative_workspace_path": "src/extension", "explanation": "Examining the extension directory to understand how the browser extension is structured"}
+Results:
+Contents of directory:
+
+[file] popup.html (1.1KB, 28 lines) - Mar 15, 07:19 PM
+[file] popup.css (1.1KB, 59 lines) - Mar 15, 07:19 PM
+[file] popup.js (1.1KB, 38 lines) - Mar 15, 07:19 PM
+[file] background.ts (12KB, 381 lines) - Mar 15, 07:19 PM
+[file] manifest.json (1.0KB, 33 lines) - Mar 15, 06:15 PM
+</tool_result>
+
+Let's look at the popup.js file which likely handles the user interface for the extension:
+
+<tool_result>
+Tool name: read_file
+Args (the format/field names of the args do not mean anything to the user, so please do not repeat): {"target_file": "src/extension/popup.js", "should_read_entire_file": true, "start_line_one_indexed": 1, "end_line_one_indexed_inclusive": 38, "explanation": "Examining the popup.js file to understand how the extension UI works"}
+Results:
+File is not in the list of files that have been manually attached to the conversation. Showing the first few lines instead.
+Contents of src/extension/popup.js, from line 1-38 (total 38 lines):
+
+
+```
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('analyze-form');
+  const urlInput = document.getElementById('url-input');
+  const analyzeButton = document.getElementById('analyze-button');
+  const resultsContainer = document.getElementById('results-container');
+  const loadingIndicator = document.getElementById('loading-indicator');
+  
+  // Set initial state
+  let isAnalyzing = false;
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get URL from input
+    const url = urlInput.value.trim();
+    
+    // Validate URL
+    if (!url || !url.match(/^https?:\/\//i)) {
+      alert('Please enter a valid URL starting with http:// or https://');
+      return;
+    }
+    
+    // Set analyzing state
+    isAnalyzing = true;
+    analyzeButton.disabled = true;
+    analyzeButton.textContent = 'Analyzing...';
+    loadingIndicator.style.display = 'block';
+    resultsContainer.innerHTML = '';
+    
+    try {
+      // Send message to background script to analyze the URL
+      chrome.runtime.sendMessage({ action
 
 ---
 

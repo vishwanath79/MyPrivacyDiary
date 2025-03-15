@@ -18,7 +18,7 @@ load_dotenv()
 OPENAI_API_KEY = environ["OPENAI_API_KEY"]
 
 # Create an llm object to use for the QueryEngine and the ReActAgent
-llm = OpenAI(model="gpt-4")
+llm = OpenAI(model="gpt-4o")
 
 session = px.launch_app()
 tracer_provider = register()
