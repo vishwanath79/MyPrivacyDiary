@@ -1,0 +1,42 @@
+{
+    "analysis": {
+      "title": "Who is tracking me?",
+      "keyFindings": [
+        "Detected presence of first-party analytics.",
+        "Detected usage of schema.org markup for SEO and product information.",
+        "Scripts from apple.com domain are heavily used.",
+        "Usage of Adobe Analytics through the script ac-analytics.js is detected.",
+        "The website uses multiple cookies for session management, analytics, and user experience personalization."
+      ],
+      "privacyConcerns": [
+        "Adobe Analytics may collect extensive data about user behavior on the site.",
+        "Cookies like 's_fid', 's_vi', and 'mbox' are used for tracking and personalization, which could raise privacy concerns if not handled transparently.",
+        "The 'shld_bt_m' cookie may be used for behavioral targeting or security measures, warranting closer examination.",
+        "Data collected might be shared with third parties for advertising or analytics purposes.",
+        "The website's privacy policy should be reviewed to understand how user data is collected, used, and shared."
+      ],
+      "recommendations": [
+        "Review and update the website's privacy policy to ensure transparency about data collection practices.",
+        "Implement a cookie consent banner to obtain user consent before setting tracking cookies.",
+        "Consider using privacy-enhancing technologies like differential privacy or anonymization techniques for analytics data.",
+        "Evaluate the necessity of each cookie and script to minimize data collection.",
+        "Provide users with options to opt out of tracking and personalization.",
+        "Implement measures to protect user data from unauthorized access and disclosure."
+      ]
+    },
+    "statistics": {
+      "totalTrackers": 1,
+      "highImpactTrackers": 1,
+      "cookiesDetected": 10
+    },
+    "detectedTrackers": [
+      {
+        "category": "analytics",
+        "name": "Adobe Analytics",
+        "impact": "high",
+        "source": "https://www.apple.com/metrics/ac-analytics/2.24.0/scripts/ac-analytics.js"
+      }
+    ],
+    "timestamp": "2024-05-15T12:00:00.000Z",
+    "analyzedUrl": "https://www.apple.com"
+  }
