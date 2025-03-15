@@ -1,3 +1,6 @@
+#API KEY
+/agent_folder/.env
+
 # dependencies
 /node_modules
 /.pnp
