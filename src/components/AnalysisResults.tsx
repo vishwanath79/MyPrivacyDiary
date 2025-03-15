@@ -15,9 +15,58 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
     return value;
   };
 
+  // Function to download tracker data as JSON
+  const downloadTrackerData = () => {
+    // Create a formatted data object for download
+    const downloadData = {
+      timestamp: new Date().toISOString(),
+      riskLevel: results.riskLevel,
+      totalTrackers: results.totalTrackers,
+      highImpactTrackers: highImpactCount,
+      cookiesDetected: results.sources.cookieCount,
+      trackers: results.trackers,
+      aiAnalysis: results.aiAnalysis
+    };
+    
+    // Convert to JSON string with pretty formatting
+    const jsonString = JSON.stringify(downloadData, null, 2);
+    
+    // Create a blob with the data
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    
+    // Create a URL for the blob
+    const url = URL.createObjectURL(blob);
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    
+    // Set link properties
+    link.href = url;
+    link.download = `tracker-analysis-${new Date().toISOString().split('T')[0]}.json`;
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Release the URL object
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-white">Tracking Analysis Results</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold text-white">Tracking Analysis Results</h1>
+        <button
+          onClick={downloadTrackerData}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+          Download Tracker Data
+        </button>
+      </div>
 
       {/* AI Analysis Summary */}
       {results.aiAnalysis?.summary && (
