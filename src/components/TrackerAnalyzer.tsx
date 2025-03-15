@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AnalysisResults from './AnalysisResults'
 
 interface AnalysisData {
@@ -30,6 +30,51 @@ export default function TrackerAnalyzer() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [results, setResults] = useState<AnalysisData | null>(null)
   const [error, setError] = useState('')
+
+  // Function to automatically download the analysis results as JSON
+  const autoDownloadResults = (data: AnalysisData) => {
+    console.log("Auto-downloading results...");
+    
+    // Create a formatted data object for download
+    const downloadData = {
+      timestamp: new Date().toISOString(),
+      analyzedUrl: url,
+      riskLevel: data.riskLevel,
+      totalTrackers: data.totalTrackers,
+      highImpactTrackers: data.trackers.reduce((count, category) => 
+        count + category.trackers.filter(t => t.impact === 'high').length, 0
+      ),
+      cookiesDetected: data.sources.cookieCount,
+      trackers: data.trackers,
+      aiAnalysis: data.aiAnalysis
+    };
+    
+    // Convert to JSON string with pretty formatting
+    const jsonString = JSON.stringify(downloadData, null, 2);
+    
+    // Create a blob with the data
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    
+    // Create a URL for the blob
+    const blobUrl = URL.createObjectURL(blob);
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    
+    // Set link properties
+    link.href = blobUrl;
+    link.download = `tracker-analysis-${new Date().toISOString().split('T')[0]}.json`;
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Release the URL object
+    URL.revokeObjectURL(blobUrl);
+    
+    console.log("Auto-download completed");
+  };
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -65,10 +110,17 @@ export default function TrackerAnalyzer() {
       const { aiAnalysis } = await aiResponse.json()
       
       // Combine results
-      setResults({
+      const combinedResults = {
         ...trackerData,
         aiAnalysis
-      })
+      };
+      
+      // Set the results state
+      setResults(combinedResults);
+      
+      // Automatically download the results
+      autoDownloadResults(combinedResults);
+      
     } catch (error) {
       setError('Failed to analyze website. Please try again.')
       console.error('Analysis failed:', error)

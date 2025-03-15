@@ -1,4 +1,33 @@
+'use client'
+
+interface AnalysisResultsProps {
+  results: {
+    riskLevel: string;
+    trackers: Array<{
+      category: string;
+      trackers: Array<{
+        name: string;
+        impact: string;
+        description?: string;
+        source?: string;
+      }>;
+    }>;
+    totalTrackers: number;
+    sources: {
+      scriptCount: number;
+      networkRequestCount: number;
+      cookieCount: number;
+    };
+    aiAnalysis?: {
+      summary: string;
+      concerningTrackers: string[];
+    };
+  };
+}
+
 export default function AnalysisResults({ results }: AnalysisResultsProps) {
+  console.log("AnalysisResults component rendering", results);
+  
   const highImpactCount = results.trackers.reduce((count, category) => 
     count + category.trackers.filter(t => t.impact === 'high').length, 0
   );
@@ -17,6 +46,8 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
 
   // Function to download tracker data as JSON
   const downloadTrackerData = () => {
+    console.log("Download button clicked");
+    
     // Create a formatted data object for download
     const downloadData = {
       timestamp: new Date().toISOString(),
@@ -27,6 +58,8 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
       trackers: results.trackers,
       aiAnalysis: results.aiAnalysis
     };
+    
+    console.log("Download data prepared:", downloadData);
     
     // Convert to JSON string with pretty formatting
     const jsonString = JSON.stringify(downloadData, null, 2);
@@ -51,6 +84,8 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
     
     // Release the URL object
     URL.revokeObjectURL(url);
+    
+    console.log("Download completed");
   };
 
   return (
@@ -59,9 +94,9 @@ export default function AnalysisResults({ results }: AnalysisResultsProps) {
         <h1 className="text-3xl font-bold text-white">Tracking Analysis Results</h1>
         <button
           onClick={downloadTrackerData}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+          className="px-6 py-3 bg-green-600 text-white text-lg rounded-lg hover:bg-green-700 transition-colors flex items-center shadow-lg"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
           Download Tracker Data
