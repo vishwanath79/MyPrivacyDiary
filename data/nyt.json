@@ -1,0 +1,204 @@
+{
+    "analysis": {
+      "title": "Who is tracking me?",
+      "keyFindings": [
+        "The website utilizes a variety of tracking technologies, including analytics, advertising networks, and third-party scripts.",
+        "Several third-party scripts are loaded from external sources, some of which are known for tracking users across the web.",
+        "The website uses cookies for personalization, advertising, and analytics purposes.",
+        "NYT uses both first-party and third-party tracking mechanisms.",
+        "Privacy Manager and Fides are used to handle consent.",
+        "The site collects and sends data to several third-party services for analytics, advertising, and personalization, which may raise privacy concerns for users."
+      ],
+      "privacyConcerns": [
+        "Extensive use of third-party tracking scripts, potentially enabling cross-site tracking.",
+        "Collection of user data for behavioral advertising and personalized content without explicit consent, depending on GDPR settings.",
+        "Potential for user fingerprinting through scripts like SecurePubAds and others.",
+        "Data collection by third-party services like Google Analytics and Datadog.",
+        "The `nyt-jkidd` cookie contains potentially sensitive information about user activity and interests.",
+        "Lack of transparency regarding the specific purposes of each cookie and tracking script.",
+        "The use of services like Iterate could involve collecting user feedback and potentially PII."
+      ],
+      "recommendations": [
+        "Implement a comprehensive cookie consent management solution to obtain user consent before setting tracking cookies.",
+        "Provide users with clear and concise information about the types of data collected and how it is used.",
+        "Minimize the use of third-party tracking scripts and prioritize first-party analytics where possible.",
+        "Regularly review and update the website's privacy policy to reflect current data collection practices.",
+        "Conduct a privacy audit to identify and mitigate potential privacy risks.",
+        "Use server-side tagging to reduce the number of client-side tracking scripts.",
+        "Provide users with options to opt out of specific types of tracking.",
+        "Ensure compliance with relevant privacy regulations, such as GDPR and CCPA.",
+        "Evaluate the necessity of each third-party tracker and replace high-impact trackers with privacy-focused alternatives where applicable."
+      ]
+    },
+    "statistics": {
+      "totalTrackers": 27,
+      "highImpactTrackers": 15,
+      "cookiesDetected": 9
+    },
+    "detectedTrackers": [
+      {
+        "category": "analytics",
+        "name": "Google Analytics",
+        "impact": "high",
+        "source": "googletagmanager.com"
+      },
+      {
+        "category": "analytics",
+        "name": "Chartbeat",
+        "impact": "medium",
+        "source": "chartbeat.com"
+      },
+      {
+        "category": "analytics",
+        "name": "Datadog RUM",
+        "impact": "medium",
+        "source": "datadoghq-browser-agent.com"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Google Ads",
+        "impact": "high",
+        "source": "doubleclick.net"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Google Ad Services",
+        "impact": "high",
+        "source": "googleadservices.com"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Amazon Ads",
+        "impact": "high",
+        "source": "amazon-adsystem.com"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "securepubads.g.doubleclick.net"
+      },
+      {
+        "category": "marketing",
+        "name": "Iterate",
+        "impact": "medium",
+        "source": "iteratehq.com"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "securepubads"
+      },
+      {
+        "category": "analytics",
+        "name": "Generic Analytics",
+        "impact": "medium",
+        "source": "a1.nyt.com"
+      },
+      {
+        "category": "analytics",
+        "name": "Google Tag Manager",
+        "impact": "high",
+        "source": "googletagmanager.com"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "securepubads.g.doubleclick.net"
+      },
+      {
+        "category": "analytics",
+        "name": "Google Tag Manager",
+        "impact": "high",
+        "source": "gtag"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "securepubads.g.doubleclick.net"
+      },
+      {
+        "category": "analytics",
+        "name": "Datadog RUM",
+        "impact": "medium",
+        "source": "datadog"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Google Ads",
+        "impact": "high",
+        "source": "securepubads.g.doubleclick.net"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Google Ads",
+        "impact": "high",
+        "source": "pubads_impl.js"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "prebid9.26.0.js"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "adslot-7fdd87617fc98f98a245.js"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "SecurePubAds",
+        "impact": "high",
+        "source": "apstag.js"
+      },
+      {
+        "category": "ad_networks",
+        "name": "Amazon Ads",
+        "impact": "high",
+        "source": "apstag.js"
+      },
+      {
+        "category": "analytics",
+        "name": "BrandMetrics",
+        "impact": "medium",
+        "source": "cdn.brandmetrics.com"
+      },
+      {
+        "category": "analytics",
+        "name": "Google Analytics",
+        "impact": "high",
+        "source": "show-ads.js"
+      },
+      {
+        "category": "analytics",
+        "name": "NYT Analytics",
+        "impact": "medium",
+        "source": "et2 snippet"
+      },
+      {
+        "category": "marketing",
+        "name": "Launchpad Privacy Manager",
+        "impact": "medium",
+        "source": "launchpad.privacymanager.io"
+      },
+      {
+        "category": "fingerprinting",
+        "name": "grumi-ip",
+        "impact": "medium",
+        "source": "rumcdn.geoedge.be"
+      },
+      {
+        "category": "analytics",
+        "name": "NYT Analytics",
+        "impact": "medium",
+        "source": "tags.js"
+      }
+    ],
+    "timestamp": "2024-05-15T12:00:00.000Z",
+    "analyzedUrl": "https://www.nytimes.com"
+  }
